@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script filters process to show only Bash-related ones.
+# shellcheck disable=SC2009
+
+ps -auxf | grep '[b]ash'
