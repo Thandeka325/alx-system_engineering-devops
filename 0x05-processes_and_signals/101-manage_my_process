@@ -5,6 +5,7 @@ PID_FILE="/var/run/my_process.pid"
 PROCESS_NAME="./manage_my_process"
 
 start() {
+	$PROCESS_NAME &
 	echo $! > "$PID_FILE"
 	echo "manage_my_process started"
 }
