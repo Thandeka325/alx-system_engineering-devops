@@ -5,12 +5,6 @@ PID_FILE="/var/run/my_process.pid"
 PROCESS_NAME="./manage_my_process"
 
 start() {
-	if [ -f "$PID_FILE" ]; then
-		echo "manage_my_process is already running."
-		return
-	fi
-
-	$PROCESS_NAME &
 	echo $! > "$PID_FILE"
 	echo "manage_my_process started"
 }
