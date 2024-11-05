@@ -1,0 +1,88 @@
+https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/ec65557f0da1fbfbff6659413885e4d4822f5b1d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20241105%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241105T100534Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=70a72f02191143a9029cac9633695e468ba00ca817052d78cf271bc19f316508
+0. Simply matching School
+mandatory
+
+
+Requirements:
+
+The regular expression must match School
+Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+
+1. Repetition Token #0
+mandatory
+
+https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/e7db3c377d46453588fc84f3a975661d142fee91.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20241105%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241105T100534Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=66bffc983840717874b802912e85b6cad8becfdf9a31cb8808825663a79b6971
+Requirements:
+
+Find the regular expression that will match the above cases
+Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+
+2. Repetition Token #1
+mandatory
+
+https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/c59ff11db195d5cf17d1790a5141ae2f234786d2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20241105%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241105T100534Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=966a502f75049c46d06e56cfbf50d99dc2b1cf3c91ef160cf326cc329369d080
+Requirements:
+
+Find the regular expression that will match the above cases
+Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+
+
+3. Repetition Token #2
+mandatory
+
+https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/3b6bf4aeca6a0c2de584e7f5d68d11eef57ce205.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20241105%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241105T100534Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=45c5c2552684942bd96ae7367512944c87dc3359eacfdc5a63b18692c189a8aa
+Requirements:
+
+Find the regular expression that will match the above cases
+Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+
+
+4. Repetition Token #3
+mandatory
+
+https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/f8dbcb9cf5ae569a8645027dc46e81cb372ce28e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20241105%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241105T100534Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=91860f3a2876074ba8c8721ce931380d841c9e7cf2579b3bde3e89bf00105b11
+Requirements:
+
+Find the regular expression that will match the above cases
+Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+Your regex should not contain square brackets
+
+5. Not quite HBTN yet
+mandatory
+Requirements:
+
+The regular expression must be exactly matching a string that starts with h ends with n and can have any single character in between
+Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+
+6. Call me maybe
+mandatory
+This task is brought to you by a professional advisor Neha Jain, Senior Software Engineer at LinkedIn.
+
+Requirement:
+
+The regular expression must match a 10 digit phone number
+
+7. OMG WHY ARE YOU SHOUTING?
+mandatory
+
+
+Requirement:
+
+The regular expression must be only matching: capital letters
+
+
+
+8. Textme
+#advanced
+This exercise was prepared for you by Guillaume Plessis, VP of Infrastructure at TextMe. It is something he uses daily. You can thank Guillaume for his project on Twitter.
+
+For this task, you’ll be taking over Guillaume’s responsibilities: one afternoon, a TextMe VoIP Engineer comes to you and explains she wants to run some statistics on the TextMe app text messages transactions.
+
+Requirements:
+
+Your script should output: [SENDER],[RECEIVER],[FLAGS]
+The sender phone number or name (including country code if present)
+The receiver phone number or name (including country code if present)
+The flags that were used
+You can find a [log file here].
+
