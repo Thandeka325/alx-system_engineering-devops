@@ -34,3 +34,5 @@ This is an introduction to Web infrastructure design.
 [What is a firewall](https://www.webopedia.com/definitions/firewall/)
 
 [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29)
+
+[Application server vs web server](https://www.f5.com/glossary)
