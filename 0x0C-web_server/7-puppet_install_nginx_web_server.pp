@@ -1,39 +1,24 @@
-# Puppet manifest toi install and configure Nginx to serve "Hello World!" and redirect /redirect_me to /.
+# Puppet manifest to install and configure Nginx
 
-class nginx_server {
-  # Install the nginx package
-  package { 'nginx':
-    ensure => installed,
-  }
-
-  # Ensure Nginx service is running
-  service { 'nginx':
-    ensure => running,
-    enable => true,
-    require => Package['nginx'],
-  }
-
-  # Configure the default site for nginx
-  file { '/var/www/html/index.html':
-    ensure  => file,
-    content => "Hello World!\n",
-    require => Package['nginx'],
-  }
-
-  # Configure nginx to redirect /redirect_me to /
-  file { '/etc/nginx/sites-available/default':
-    ensure  => file,
-    content => template('nginx/default.conf.erb'),
-    notify  => Service['nginx'],
-  }
-
-  # Ensure that the nginx configuration is reloaded to apply changes
-  exec { 'reload_nginx':
-    command => '/etc/init.d/nginx reload',
-    refreshonly => true,
-    require => File['/etc/nginx/sites-available/default'],
-  }
+exec { 'update system':
+        command => '/usr/bin/apt-get update',
 }
 
-# Apply the nginx_server class
-include nginx_server
+package { 'nginx':
+	ensure => 'installed',
+	require => Exec['update system']
+}
+
+file {'/var/www/html/index.html':
+	content => 'Hello World!'
+}
+
+exec {'redirect_me':
+	command => 'sed -i "24i\	rewrite ^/redirect_me https://github.com/Thandeka325 permanent;" /etc/nginx/sites-available/default',
+	provider => 'shell'
+}
+
+service {'nginx':
+	ensure => running,
+	require => Package['nginx']
+}
