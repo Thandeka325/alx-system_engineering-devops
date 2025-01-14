@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script runs Apache on a designated container.
+# Returns a page containing Hello ALX when querying the root of it.
+
+service apache2 start
