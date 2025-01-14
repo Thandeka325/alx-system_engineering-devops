@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script installs Nginx on a new Ubuntu server, and configures it to listen on port 80
+
+# Update the package list and install Nginx
+apt-get update -y
+apt-get install -y nginx
+
+# Create a custom index.html file with "Hello World!" content
+echo "Hello World!" > /var/www/html/index.html
+
+service nginx start
+service nginx reload
