@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# This script installs Nginx on a new Ubuntu server, configures it to listen on port 80,
-# and serves a page with the text "Hello World!" at the root URL.
+# This script installs and configures Nginx on an Ubuntu server to serve "Hello World!" on port 80.
 
 # Ensure the script is run as root
 if [ "$(id -u)" -ne 0 ]; then
@@ -8,15 +7,21 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-# Update the package list and install Nginx
+# Update package list and install Nginx
 apt-get update -y
 apt-get install -y nginx
 
-# Create a custom index.html file with "Hello World!" content
+# Configure Nginx to serve "Hello World!"
 echo "Hello World!" > /var/www/html/index.html
 
-# Ensure Nginx is started (using the init.d system, since systemctl is not allowed)
+# Start Nginx using init.d (systemctl is not allowed)
 service nginx start
 
-# Reload Nginx to apply changes
+# Ensure Nginx is running
+if ! service nginx status > /dev/null; then
+    echo "Nginx failed to start."
+    exit 1
+fi
+
+# Reload Nginx to apply any changes
 service nginx reload
