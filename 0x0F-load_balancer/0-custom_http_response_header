@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Configures an Ubuntu machine to have a custom HTTP response header
+
+# Update packages and install Nginx
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Create an index file
+echo "Hello world!" | sudo tee /var/www/html/index.html
+
+# Redirect traffic to a custom page
+sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Thandeka325 permanent;/" /etc/nginx/sites-enabled/default
+
+# Create a custom 404 error page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
+# Add the custom HTTP response header
+# Ensures the header is added within the appropriate `server` block
+sudo sed -i "/server_name _;/a \\tadd_header X-Served-By \$HOSTNAME;" /etc/nginx/sites-enabled/default
+
+# Test Nginx configuration for syntax errors
+sudo nginx -t
+
+# Restart the Nginx service
+sudo service nginx restart
