@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Configures HAProxy for load balancing between web-01 and web-02
+
+# Update package list and install HAProxy
+sudo apt-get update
+sudo apt-get install -y haproxy
+
+# Configure HAProxy
+server_config=\
+"
+frontend thandeka_frontend
+	bind *:80
+	mode http
+	default_backend thandeka_backend
+backend thandeka_backend
+	balance roundrobin
+	server 806514-web-01 34.237.91.31:80 check
+	server 806514-web-02 18.234.169.141:80 check
+"
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
+# Test configuration
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+
+# Restart HAProxy to apply changes
+sudo service haproxy restart
