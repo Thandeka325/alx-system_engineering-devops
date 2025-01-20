@@ -6,7 +6,7 @@ sudo apt-get update
 sudo apt-get install -y nginx
 
 # Creating an index file
-echo "Hello world! | sudo tee /var/www/html/index.html
+echo "Hello world!" | sudo tee /var/www/html/index.html
 
 # Redirection of the server page
 update_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Thandeka325 permanent;"
