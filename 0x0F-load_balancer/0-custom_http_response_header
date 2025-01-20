@@ -16,7 +16,8 @@ echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 
 # Add the custom HTTP response header
 # Ensures the header is added within the appropriate `server` block
-sudo sed -i "/server_name _;/a \\tadd_header X-Served-By \$HOSTNAME;" /etc/nginx/sites-enabled/default
+HOSTNAME=$(hostname)
+sudo sed -i "/server_name _;/a \\tadd_header X-Served-By '${HOSTNAME}';" /etc/nginx/sites-enabled/default
 
 # Test Nginx configuration for syntax errors
 sudo nginx -t
