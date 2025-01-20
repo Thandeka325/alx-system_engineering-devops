@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# The configuration of web-01 to have an HTTP response header
+
+# Updating packages before installation process
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Creating an index file
+echo "Hello world! | sudo tee /var/www/html/index.html
+
+# Redirection of the server page
+update_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Thandeka325 permanent;"
+
+sudo sed -i "s/server_name _;/$update_string/" /etc/nginx/sites-enabled/default
+
+# Creating a custom error page
+echo "Ceci n'est pas une page" | sudo tee /var/www.html/404.html
+
+# Creating a custom HTTP response header
+sudo sed -i "server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+
+# Testing for syntax errors
+sudo nginx -t
+
+# Restarting servive after installation process
+sudo service nginx restart
