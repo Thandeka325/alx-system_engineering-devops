@@ -1,1 +1,1 @@
-This is the shell, I/O Redirection tasks.
+# __Project: 0x02-shell_redirections__
