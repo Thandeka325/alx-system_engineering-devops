@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# This script displays subdomains for a given domain, using dig to query DNS records.
+
+get_subdomain_info() {
+    local domain=$1
+    local subdomain=$2
+    local result
+
+    # Perform the DNS query
+    result=$(dig "${subdomain}.${domain}" +short)
+    if [[ -n "$result" ]]; then
+        echo "The subdomain ${subdomain} is an A record and points to ${result}"
+    else
+        echo "The subdomain ${subdomain} does not have an A record or is unreachable"
+    fi
+}
+
+main() {
+    local domain=$1
+    local subdomain=$2
+
+    if [[ -z "$domain" ]]; then
+        echo "Usage: $0 domain [subdomain]"
+        exit 1
+    fi
+
+    # Default subdomains if only domain is provided
+    if [[ -z "$subdomain" ]]; then
+        for sub in www lb-01 web-01 web-02; do
+            get_subdomain_info "$domain" "$sub"
+        done
+    else
+        get_subdomain_info "$domain" "$subdomain"
+    fi
+}
+
+# Call the main function with the script arguments
+main "$@"
