@@ -5,11 +5,16 @@ get_subdomain_info() {
     local domain=$1
     local subdomain=$2
     local result
+    local record_type
 
     # Perform the DNS query
     result=$(dig "${subdomain}.${domain}" +short)
+    
+    # Determine the record type (assuming A record for this task)
+    record_type="A"
+    
     if [[ -n "$result" ]]; then
-        echo "The subdomain ${subdomain} is an A record and points to ${result}"
+        echo "The subdomain ${subdomain} is a ${record_type} record and points to ${result}"
     else
         echo "The subdomain ${subdomain} does not have an A record or is unreachable"
     fi
