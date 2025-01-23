@@ -20,4 +20,4 @@ __What happens when you don’t secure your website traffic?__
 __man or help:__
 
 - `awk`
-- `dig'
+- `dig`
