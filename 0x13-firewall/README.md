@@ -2,6 +2,12 @@
 
 This is an introduction to firewalls, and how they work.
 
+![image](https://github.com/user-attachments/assets/cabd915f-4203-493e-87d9-65cdd1e500d2)
+
+__Your servers without a firewall…__
+
+![image](https://github.com/user-attachments/assets/3356c600-cb1b-4022-a17d-71074436dd48)
+
 __Resources__
 
 - [What is a firewall](https://en.wikipedia.org/wiki/Firewall_%28computing%29)
