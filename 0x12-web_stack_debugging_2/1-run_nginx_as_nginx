@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script configures the container to fit the following requirements:
+# nginx must be running as nginx user
+# nginx must be listening on all active IPs on port 8080
+
+# Update Nginx configuration to use user 'nginx' and listen on port 8080
+sed -i 's/^user .*/user nginx;/' /etc/nginx/nginx.conf
+sed -i 's/listen 80 default_server;/listen 8080 default_server;/' /etc/nginx/sites-available/default
+sed -i 's/listen \[::\]:80 default_server;/listen [::]:8080 default_server;/' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply changes
+service nginx restart
