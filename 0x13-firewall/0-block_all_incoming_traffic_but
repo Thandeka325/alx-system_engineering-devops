@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script installs the ufw firewall and setup a few rules on web-01.
+
+# Install and update ufw
+sudo apt install -y ufw
+
+# Allow outgoing traffic and deny incoming traffic
+sudo ufw default allow outgoing
+sudo ufw default deny incoming
+
+# Allow ssh ports after configuration
+sudo ufw allow 22
+sudo ufw allow 443
+sudo ufw allow 80
+
+# Enable firewall
+echo "y" | sudo ufw enable
