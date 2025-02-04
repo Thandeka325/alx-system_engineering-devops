@@ -1,0 +1,94 @@
+Step 1: Configure the Primary Server (web-01)
+1.1 Edit the MySQL Configuration
+Edit the MySQL configuration file:
+
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+Find the line:
+bind-address = 127.0.0.1
+Comment it out (or remove it) to allow external connections.
+
+Add the following lines at the end of the file:
+[mysqld]
+server-id = 1
+log_bin = /var/log/mysql/mysql-bin.log
+binlog_do_db = tyrell_corp
+
+Save and exit (CTRL + X, then Y, then Enter).
+
+1.2 Restart MySQL
+
+sudo systemctl restart mysql
+
+1.3 Get the Binary Log Position
+Log into MySQL:
+
+mysql -u root -p
+Enter your MySQL root password when prompted.
+
+Inside the MySQL prompt (mysql>):
+SHOW MASTER STATUS;
+
+Note down the values of File and Position
+
+Step 2: Configure the Replica Server (web-02)
+2.1 Edit the MySQL Configuration
+On web-02, edit the MySQL configuration file:
+
+Follow the same steps as above, bt add the following line at the end of the /etc/mysql/mysql.conf.d/mysqld.cnf file:
+
+[mysqld]
+server-id = 2
+relay-log = /var/log/mysql/mysql-relay-bin.log
+replicate-do-db = tyrell_corp
+
+2.2 Restart MySQL
+sudo systemctl restart mysql
+
+Step 3: Link the Replica to the Primary
+Log into MySQL on web-02:
+
+mysql -u root -p
+Enter your MySQL root password when prompted.
+
+Inside the MySQL prompt, stop the replica first:
+STOP SLAVE;
+
+Then link it to the primary (web-01):
+CHANGE MASTER TO
+    MASTER_HOST='web-01-IP',
+    MASTER_USER='replica_user',
+    MASTER_PASSWORD='YourStrongPassword',
+    MASTER_LOG_FILE='mysql-bin.000001',
+    MASTER_LOG_POS=154;
+
+# NOTE:
+Replace:
+
+- web-01-IP → With the actual IP of web-01
+- 'YourStrongPassword' → With the password you set for replica_user
+- 'mysql-bin.000001' and 154 → Use values from SHOW MASTER STATUS;
+
+3.1 Start the Replica
+START SLAVE;
+
+Check the replication status:
+SHOW SLAVE STATUS\G;
+
+Look for these values:
+Slave_IO_Running: Yes
+Slave_SQL_Running: Yes
+
+If both say Yes, replication is working!
+
+Step 4: Test Replication
+On web-01, add a test record:
+
+mysql -u root -p -e "USE tyrell_corp; INSERT INTO nexus6 (id, name) VALUES (2, 'Abuseh');"
+
+Then, on web-02, check if the data is replicated:
+mysql -u root -p -e "USE tyrell_corp; SELECT * FROM nexus6;"
+
+If you see the new row, replication is successful!
+
+Save and copy the configuration files as per the task instructions.
