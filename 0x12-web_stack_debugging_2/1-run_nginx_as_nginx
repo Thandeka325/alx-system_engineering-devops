@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
-# This script configures the container so that Nginx runs as nginx user 
-# and listens on all active IPs on port 8080
+# This script configures the container so that Nginx runs as nginx user, and listens on all active IPs on port 8080
 
+# Give neccesarry permissions to Nginx configuration file
 chmod 644 /etc/nginx/nginx.conf
-sed -Ei 's/^(\s*#?\s*user\s+).*/\1nginx;/' /etc/nginx/nginx.conf
-sed -Ei 's/listen\s+80\s*;/listen 8080;/' /etc/nginx/sites-available/default
-sed -Ei 's/listen\s+\[::\]:80\s*;/listen [::]:8080;/' /etc/nginx/sites-available/default
-service nginx restart
+
+# Update Nginx configuration to use user 'nginx' and listen on port 8080
+sed -Ei 's/\s*#?\s*user .*/user nginx;/' /etc/nginx/nginx.conf
+sed -Ei 's/(listen (\[::\]:)?80) /\180 /' /etc/nginx/sites-enabled/default
+pkill apache2
+
+# Restart
+su nginx -s /bin/bash -c 'service nginx restart'
