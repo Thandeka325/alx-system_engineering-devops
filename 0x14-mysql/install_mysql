@@ -12,3 +12,4 @@ Next prompt will ask for a password you can just press enter or write your desir
 If your Ububtu system is compatibile with the version you are installing it will just take you directly to the password prompt.
 
 Thats it you have installed MySQL on your web servers. 
+It was tricky because of the Ubuntu the sandbox was using

@@ -1,0 +1,30 @@
+Step 1: Log in to MySQL
+Run this on both web-01 and web-02:
+
+mysql -u root -p
+Enter your MySQL root password when prompted.
+
+Step 2: Create the User
+Inside the MySQL prompt, run:
+
+CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+
+
+Step 3: Grant Permissions
+Give the user REPLICATION CLIENT privileges so it can check replication status:
+
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
+
+
+Step 4: Apply Changes
+
+FLUSH PRIVILEGES;
+
+
+Step 5: Exit MySQL
+EXIT;
+
+on the web server:
+Step 6: Verify the User
+mysql -u holberton_user -p -e "SHOW GRANTS FOR 'holberton_user'@'localhost';"
+
