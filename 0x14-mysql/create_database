@@ -1,0 +1,44 @@
+Step 1: Log in to MySQL
+On web-01, access MySQL:
+
+mysql -u root -p
+Enter your MySQL root password when prompted.
+
+Step 2: Create the Database
+Inside the MySQL prompt (mysql>), create the database:
+
+CREATE DATABASE tyrell_corp;
+
+Step 3: Switch to the Database
+
+USE tyrell_corp;
+
+Step 4: Create the Table
+CREATE TABLE nexus6 (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+Step 5: Insert Data
+
+INSERT INTO nexus6 (name) VALUES ('Thandeka');
+
+Step 6: Verify the Table and Data
+
+SELECT * FROM nexus6;
+
+Step 7: Grant Permissions to holberton_user
+
+GRANT SELECT ON tyrell_corp.nexus6 TO 'holberton_user'@'localhost';
+FLUSH PRIVILEGES;
+
+Step 8: Test the User
+Exit MySQL:
+
+EXIT;
+
+Now, log in as holberton_user and check the table:
+
+mysql -u holberton_user -p -e "USE tyrell_corp; SELECT * FROM nexus6;"
+
+Enter the password: projectcorrection280hbtn.
