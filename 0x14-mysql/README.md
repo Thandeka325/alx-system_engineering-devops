@@ -1,7 +1,8 @@
 # __Project: 0x14-mysql__
 
-This is an introduction to MySQL Replication, a critical skill for any backend developer. This project focuses on the essentials, setup, and troubleshooting of MySQL Replication.
+This is an introduction to MySQL Replication, a critical skill for any backend developer. This project focuses on MySQL Replication's essentials, setup, and troubleshooting.
 
+![image](https://github.com/user-attachments/assets/d2cd53dc-f707-4af3-8ae1-7d3887b6eff5)
 
 # __Resources__
 
