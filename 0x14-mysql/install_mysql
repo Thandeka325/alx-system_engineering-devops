@@ -1,0 +1,14 @@
+# These are the steps that I followed.
+
+step 1: Use the link given by ALX for installing mysql 5.7 on both the severs (web-01 and web-02)
+sudo wget -O mysql57 https://raw.githubusercontent.com/nuuxcode/alx-system_engineering-devops/master/scripts/mysql57 && sudo chmod +x mysql57 &&  sudo ./mysql57
+
+If you are using Ubuntu(Focal) it will prompt you to choose a compatibile programme use your keyboard arrow keys to nevigate to `ubuntu bionic`(it will be hilighted when you choose it) and press enter
+
+The next promt will ask you to select the appropriate product to choose the version that you wish to receive. Just nevigate to `ok` and press enter.
+
+Next prompt will ask for a password you can just press enter or write your desired password to use to login to mysql(advise to add password if you will use mysql -u root -p to access mysql on the server.
+
+If your Ububtu system is compatibile with the version you are installing it will just take you directly to the password prompt.
+
+Thats it you have installed MySQL on your web servers. 
