@@ -1,0 +1,33 @@
+Step 1: Log in to MySQL 
+On web-01, access MySQL:
+
+mysql -u root -p
+Enter your MySQL root password when prompted.
+
+Step 2: Create the Replica User
+Inside the MySQL prompt (mysql>), create the user:
+
+CREATE USER 'replica_user'@'%' IDENTIFIED BY 'YourStrongPassword';
+
+Replace 'YourStrongPassword' with a secure password of your choosing.
+
+Step 3: Grant Replication Privileges
+
+GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
+FLUSH PRIVILEGES;
+
+Step 4: Grant holberton_user Permission to Check Users
+To allow holberton_user to check the list of users and their replication privileges:
+
+GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost';
+FLUSH PRIVILEGES;
+
+Step 5: Verify the User and Permissions
+Exit MySQL:
+EXIT;
+
+Now, log in as holberton_user and check the user list:
+
+mysql -u holberton_user -p -e 'SELECT user, Repl_slave_priv FROM mysql.user'
+
+Enter the password: projectcorrection280hbtn.
