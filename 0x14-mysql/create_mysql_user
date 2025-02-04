@@ -28,3 +28,5 @@ on the web server:
 Step 6: Verify the User
 mysql -u holberton_user -p -e "SHOW GRANTS FOR 'holberton_user'@'localhost';"
 
+
+Remember to do this on both the servers
