@@ -19,3 +19,4 @@ This is a perfect example of a task that is not suited for Bash scripting, so le
 - [What is a REST API](https://www.sitepoint.com/rest-api/)
 - [What are microservices](https://smartbear.com/learn/api-design/microservices/)
 - [PEP8 Python style - having a clean code respecting style guide is really appreciated in the industry](https://peps.python.org/pep-0008/)
+- [Portfolio Project Deeper Overview](https://intranet.alxswe.com/concepts/102042) ALX concept
