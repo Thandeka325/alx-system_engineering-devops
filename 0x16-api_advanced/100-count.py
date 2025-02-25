@@ -53,7 +53,7 @@ def recurse(subreddit, hot_list=[], after=None):
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {"User-Agent": "CustomUserAgent/1.0"}
-    params = {"after": after} if after else {}
+    params = {"limit": 100, "after": after} if after else {"limit": 100}
     response = requests.get(
             url, headers=headers, params=params, allow_redirects=False
     )
@@ -82,9 +82,11 @@ def count_words(subreddit, word_list, word_count=None, after=None):
     if word_count is None:
         word_count = Counter()
 
+    word_list = Counter(word.lower() for word in word_list)
+
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {"User-Agent": "CustomUserAgent/1.0"}
-    params = {"after": after} if after else {}
+    params = {"limit": 100, "after": after} if after else {"limit": 100}
     response = requests.get(
             url, headers=headers, params=params, allow_redirects=False
     )
@@ -94,20 +96,25 @@ def count_words(subreddit, word_list, word_count=None, after=None):
 
     data = response.json()
     posts = data.get("data", {}).get("children", [])
-    titles = " ".join(
-        post.get("data", {}).get("title", "") for post in posts
-    ).lower().split()
-    word_list = [word.lower() for word in word_list]
+
+    # Count words in post titles
+    title_counts = Counter(
+        word for post in posts for word in post.get("data", {}).get(
+            "title", "").lower().split()
+    )
+
     for word in word_list:
-        word_count[word] += titles.count(word)
+        word_count[word] += title_counts[word]
 
     after = data.get("data", {}).get("after", None)
     if after:
         return count_words(subreddit, word_list, word_count, after)
 
+    # Sort and print the final word count
     sorted_word_count = sorted(
-            word_count.items(), key=lambda x: (-x[1], x[0])
+        [(word, count) for word, count in word_count.items() if count > 0],
+        key=lambda x: (-x[1], x[0])
     )
+
     for word, count in sorted_word_count:
-        if count > 0:
-            print(f"{word}: {count}")
+        print(f"{word}: {count}")
