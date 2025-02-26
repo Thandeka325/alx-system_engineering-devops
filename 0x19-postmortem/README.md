@@ -1,6 +1,6 @@
 ## __Project: 0x19. Postmortem__
 
-Any software system will eventually fail, and that failure can come stem from a wide range of possible factors: bugs, traffic spikes, security issues, hardware failures, natural disasters, human error… Failing is normal and failing is actually a great opportunity to learn and improve. Any great Software Engineer must learn from his/her mistakes to make sure that they won’t happen again. Failing is fine, but failing twice because of the same issue is not.
+Any software system will eventually fail, and that failure can stem from a wide range of possible factors: bugs, traffic spikes, security issues, hardware failures, natural disasters, and human error… Failing is normal, and it is actually a great opportunity to learn and improve. Any great Software Engineer must learn from his/her mistakes to ensure that they won’t happen again. Failing is fine, but failing twice because of the same issue is not.
 
 A postmortem is a tool widely used in the tech industry. After any outage, the team(s) in charge of the system will write a summary that has 2 main goals:
 
@@ -13,3 +13,5 @@ __Resources__
 - [The importance of an incident postmortem process](https://www.atlassian.com/incident-management/postmortem)
 - [What is an Incident Postmortem?](https://www.pagerduty.com/resources/learn/incident-postmortem/)
 - [On-call](https://intranet.alxswe.com/concepts/39) ALX concept page
+
+[My Postmortem blog post](https://medium.com/@marhwayiza325/postmortem-the-great-3-am-database-meltdown-1fe7a6164ebc)
