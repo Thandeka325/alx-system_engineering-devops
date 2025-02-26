@@ -1,6 +1,7 @@
 ## __Project: 0x18. Webstack monitoring__
 
-This is an introduction to web stack monitoring.
+This is an introduction to web stack monitoring using [DataDog](https://www.datadoghq.com/) an application used to monitor infrastructure and applications.
+
 ![image](https://github.com/user-attachments/assets/f2050515-58f1-4927-9a07-ef87b957d9e0)
 
 __Background Context__
