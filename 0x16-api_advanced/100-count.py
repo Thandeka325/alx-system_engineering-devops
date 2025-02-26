@@ -5,8 +5,8 @@ and top 10 hot posts for a given subreddit.
 Also includes recursive functions to get all hot post titles,
 and count keyword occurrences.
 """
-import requests
 from collections import Counter
+import requests
 
 
 def number_of_subscribers(subreddit):
