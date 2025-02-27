@@ -1,5 +1,5 @@
 # Fixes the 500 error
-exec { 'Fix wordpress site':
-  command  => 'sudo sed -i "s/.phpp/.php/" /var/www/html/wp-settings.php',
-  provider => shell,
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php && echo "" >> /var/www/html/wp-settings.php',
+  path    => ['/usr/local/bin', '/bin'],
 }
