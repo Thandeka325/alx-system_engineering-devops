@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Script reload Gunicorn in a graceful way.
+# Script to gracefully reload Gunicorn by sending a HUP signal to the master process
 
-ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
+pgrep -f gunicorn | xargs kill -HUP
