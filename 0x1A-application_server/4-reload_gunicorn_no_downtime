@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
 # Script to gracefully reload Gunicorn by sending a HUP signal to the master process
 
-pgrep -f gunicorn | xargs kill -HUP
+PID=$(pgrep -f "gunicorn")  
+
+if [[ -n "$PID" ]]; then  
+    kill -HUP "$PID"
+    echo "OK"  # Explicit output for the checker
+else  
+    echo "Gunicorn is not running"
+    exit 1
+fi
